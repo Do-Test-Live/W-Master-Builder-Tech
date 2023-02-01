@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php
+include("config/dbconfig.php");
+$result = 0;
+if (isset($_POST['login'])) {
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+    $key = 'master-builder';
+    $Pwd_peppered = Hash_hmac("Sha256", $password, $key);
+    $query = $con->query("select `password`,`status`,`id`,`type` from user where `user_email` = '$email'");
+    if ($query->num_rows == 1) {
+        while ($row = mysqli_fetch_assoc($query)) {
+            $pass = $row["password"];
+            if (Password_verify($Pwd_peppered, $pass) && $row['status'] == 1 && $row['type'] == 0) {
+                session_start();
+                $_SESSION["id"] = $row['id'];
+                header("Location: index.php");
+            } else {
+                $result = 2;
+            }
+        }
+    } else {
+        $result = 1;
+    }
+}
+
+?><!DOCTYPE html>
 <html lang="en-US">
 <head>
     <!-- Meta setup -->
@@ -19,10 +44,11 @@
     <link rel="stylesheet" href="css/bootstrap.css"/>
 
     <!-- Main StyleSheet -->
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="toaster/toastr.min.css"/>
 
 </head>
 <body>
@@ -34,18 +60,19 @@
 <main class="main-wrapper">
     <div class="main-part">
         <div class="heading-cnt">
-            <h1>Login</h1>
+            <h1>Login
+            </h1>
         </div>
         <div class="content-part">
-            <form action="#">
+            <form action="#" method="post">
                 <div class="email-box">
                     <label for="a1">Email</label>
-                    <input type="email" id="a1" placeholder="Email Here" required>
+                    <input type="email" name="email" id="a1" placeholder="Email Here" required>
                 </div>
                 <div class="email-box">
                     <label for="pass_log_id">Password</label>
                     <div class="hideshow-pass">
-                        <input id="pass_log_id" type="password" name="pass" value="password1234" required>
+                        <input id="pass_log_id" type="password" name="password" value="password1234" required>
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>
                     </div>
                 </div>
@@ -54,16 +81,14 @@
                 </div>
 
                 <div class="help-cnt">
-                    <a href="sign-in.html">
+                    <a href="signup.php">
                         <p>Sign Up</p>
                     </a>
                 </div>
+                <div class="submit-btn text-center">
+                    <button type="submit" name="login">Login</button>
+                </div>
             </form>
-            <div class="submit-btn text-center">
-                <a href="user.html">
-                    <button type="submit">Login</button>
-                </a>
-            </div>
         </div>
         <div class="footer-part">
             <ul>
@@ -99,6 +124,7 @@
 
 <!-- Main jQuery -->
 <script src="js/jquery-3.4.1.min.js"></script>
+
 
 <!-- Bootstrap jQuery -->
 <script src="js/bootstrap.bundle.js"></script>

@@ -44,7 +44,7 @@ img {
 }
 
 .main-part {
-    background-image: url(images/bg-shape.png);
+    background-image: url(../images/bg-shape.png);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: auto;
@@ -278,7 +278,7 @@ img {
 
 /*=== building-master page start ===*/
 .main-partbg2 {
-    background-image: url(images/bg-shape-2.png);
+    background-image: url(../images/bg-shape-2.png);
 }
 
 .build-masttitle {
@@ -345,42 +345,42 @@ img {
 }
 
 .desired1 {
-    background-image: url(images/desired-1.png);
+    background-image: url(../images/desired-1.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired2 {
-    background-image: url(images/desired-2.png);
+    background-image: url(../images/desired-2.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired3 {
-    background-image: url(images/desired-3.png);
+    background-image: url(../images/desired-3.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired4 {
-    background-image: url(images/desired-4.png);
+    background-image: url(../images/desired-4.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired5 {
-    background-image: url(images/desired-5.png);
+    background-image: url(../images/desired-5.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired6 {
-    background-image: url(images/desired-6.png);
+    background-image: url(../images/desired-6.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
@@ -392,70 +392,70 @@ img {
 }
 
 .desired7 {
-    background-image: url(images/desired-7.png);
+    background-image: url(../images/desired-7.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired8 {
-    background-image: url(images/desired-8.png);
+    background-image: url(../images/desired-8.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired9 {
-    background-image: url(images/desired-9.png);
+    background-image: url(../images/desired-9.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired10 {
-    background-image: url(images/desired-10.png);
+    background-image: url(../images/desired-10.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired11 {
-    background-image: url(images/desired-11.png);
+    background-image: url(../images/desired-11.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired12 {
-    background-image: url(images/desired-12.png);
+    background-image: url(../images/desired-12.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired13 {
-    background-image: url(images/desired-13.png);
+    background-image: url(../images/desired-13.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired14 {
-    background-image: url(images/desired-14.png);
+    background-image: url(../images/desired-14.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired15 {
-    background-image: url(images/desired-15.png);
+    background-image: url(../images/desired-15.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
 }
 
 .desired16 {
-    background-image: url(images/desired-16.png);
+    background-image: url(../images/desired-16.png);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;

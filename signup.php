@@ -1,3 +1,34 @@
+<?php
+include("config/dbconfig.php");
+$result = 0;
+if (isset($_POST["signup"])) {
+    $phone = mysqli_real_escape_string($con, $_POST['phone']);
+    $name = mysqli_real_escape_string($con, $_POST['name']);
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
+    $address = mysqli_real_escape_string($con, $_POST['address']);
+    $type = mysqli_real_escape_string($con, $_POST['type']);
+    $key = 'master-builder';
+    $Pwd_peppered = Hash_hmac("Sha256", $password, $key);
+    $Pwd_hashed = Password_hash($Pwd_peppered, PASSWORD_ARGON2ID);
+
+    $email_check = $con->query("select id from user where useremail = '$email'");
+    if ($email_check->num_rows > 0) {
+        $result = 1;
+    } else {
+        $signup_query = $con->query("INSERT INTO `user`(`phone`, `name`, `user_email`, `address`, `password`, `type`) VALUES ('$phone','$name','$email','$address','$Pwd_hashed','$type')");
+        if ($signup_query) {
+            $result = 2;
+            header('Location: login.php');
+        } else {
+            $result = 3;
+        }
+    }
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -34,26 +65,45 @@
 <main class="main-wrapper">
     <div class="main-part">
         <div class="heading-cnt">
-            <h1>Confirm Password</h1>
+            <h1>Signin form</h1>
         </div>
         <div class="content-part">
-            <form action="#">
+            <form action="#" method="post">
+                <div class="email-box">
+                    <label for="a1">Phone</label>
+                    <input type="tel" name="phone" id="a1" placeholder="12341234" required>
+                </div>
+                <div class="email-box">
+                    <label for="a2">Full Name</label>
+                    <input type="text" name="name" id="a2" placeholder="Name Name Name" required>
+                </div>
+                <div class="email-box">
+                    <label for="disabledSelect" class="form-label">Choose Your Role</label>
+                    <select id="disabledSelect" name="type" class="form-select">
+                        <option value="0">User</option>
+                        <option value="1">Master</option>
+                    </select>
+                </div>
+                <div class="email-box">
+                    <label for="a3">Email</label>
+                    <input type="email" name="email" id="a3" placeholder="Email Here" required>
+                </div>
                 <div class="email-box">
                     <label for="pass_log_id">Password</label>
                     <div class="hideshow-pass">
-                        <input id="pass_log_id" type="password" name="pass" value="password1234" required>
+                        <input id="pass_log_id" type="password" name="password" placeholder="password1234"
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>
                     </div>
                 </div>
-                <div class="help-cnt">
-                    <p>Need any help?</p>
+                <div class="email-box">
+                    <label for="addr">Address</label>
+                    <textarea name="address" id="addr" cols="30" rows="4" placeholder="0001, EST, HK"></textarea>
+                </div>
+                <div class="submit-btn text-center">
+                    <button type="submit" name="signup">Submit</button>
                 </div>
             </form>
-            <div class="submit-btn text-center">
-                <a href="login.php">
-                    <button type="submit">Submit</button>
-                </a>
-            </div>
         </div>
         <div class="footer-part">
             <ul>
