@@ -24,7 +24,7 @@ include('config/dbconfig.php');
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Your Organization Name</title>
+    <title>Master Builder Tech</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>

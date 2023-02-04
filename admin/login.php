@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Your Organization Name</title>
+    <title>Master Builder Tech</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -94,7 +94,6 @@ if (isset($_POST['login'])) {
 <script src="vendor/global/global.min.js"></script>
 <script src="js/custom.min.js"></script>
 <script src="js/dlabnav-init.js"></script>
-<script src="js/styleSwitcher.js"></script>
 </body>
 
 </html>

@@ -24,7 +24,6 @@ if (isset($_POST["signup"])) {
             $result = 3;
         }
     }
-
 }
 ?>
 
