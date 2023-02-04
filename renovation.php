@@ -1,3 +1,35 @@
+<?php
+include ("config/dbconfig.php");
+if (isset($_POST['job_submit'])){
+    $name = mysqli_real_escape_string($con,$_POST['name']);
+    $contact = mysqli_real_escape_string($con,$_POST['contact']);
+    $postcode = mysqli_real_escape_string($con,$_POST['postcode']);
+    $address = mysqli_real_escape_string($con,$_POST['address']);
+    $time = mysqli_real_escape_string($con,$_POST['time']);
+    $budget = mysqli_real_escape_string($con,$_POST['budget']);
+    $license = mysqli_real_escape_string($con,$_POST['license']);
+    $description = mysqli_real_escape_string($con,$_POST['description']);
+    $c_image = $_FILES['image']['name'];
+    $c_image_temp=$_FILES['image']['tmp_name'];
+    $imageFileType = strtolower(pathinfo($c_image,PATHINFO_EXTENSION));
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ){
+        echo "wrong file extension";
+    }else{
+        if(move_uploaded_file($c_image_temp , "images/jobs/$c_image")){
+            $insert_job = $con->query("INSERT INTO `jobs`(`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`) 
+VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image')");
+            if($insert_job){
+                header('Location: index.php');
+            }
+        }
+    }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -35,46 +67,51 @@
                     <h1>Renovation</h1>
                 </div>
                 <div class="content-part">
-                    <form action="#">
+                    <form action="#" method="post" enctype="multipart/form-data">
                         <div class="renovat-item">
                             <label for="r1">Name</label>
-                            <input type="text" id="r1" placeholder="PlaceHolder I">
+                            <input type="text" id="r1" name="name" placeholder="Enter your name" required>
                         </div>
                         <div class="renovat-item">
                             <label for="r2">Contact</label>
-                            <input type="text" id="r2" placeholder="PlaceHolder I">
+                            <input type="text" id="r2" name="contact" placeholder="Contact Number" required>
                         </div>
                         <div class="renovat-item">
                             <label for="r3">PostCode</label>
-                            <input type="text" id="r3" placeholder="PlaceHolder I">
+                            <input type="text" id="r3" name="postcode" placeholder="Post Code" required>
                         </div>
                         <div class="renovat-item">
                             <label for="r4">Address</label>
-                            <input type="text" id="r4" placeholder="PlaceHolder I">
+                            <input type="text" id="r4" name="address" placeholder="Address" required>
                         </div>
                         <div class="renovat-item">
                             <label for="r5">Time</label>
-                            <input type="text" id="r5" placeholder="01/22/2024">
+                            <input type="time" id="r5" name="time" placeholder="" required>
                         </div>
                         <div class="renovat-item">
                             <label for="r6">Budget</label>
-                            <input type="text" id="r6" placeholder="10000">
+                            <input type="text" id="r6" name="budget" placeholder="Budget" required>
                         </div>
                         <div class="renovat-item">
                             <p>Require designated license</p>
                             <div class="custck-box">
                                 <div class="form-group">
-                                    <input type="checkbox" id="html" checked>
+                                    <input type="checkbox" name="license" value="1" id="html">
                                     <label for="html"></label>
                                 </div>
                             </div>      
                         </div>
                         <div class="renovat-item renovat2">
                             <p>Desctription</p>
-                            <textarea name="" id="" cols="30" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                            <textarea name="description" required id="" cols="30" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                        </div>
+                        <div class="renovat-item">
+                            <label for="r6">Image</label>
+                            <input type="file" id="r6" name="image" placeholder="" required>
                         </div>
 
-                        <div class="repair-box">
+
+                        <!--<div class="repair-box">
                             <h4>Repair Photo</h4>
                             <div class="repair-item">
                                 <div class="repair-inner">
@@ -87,10 +124,10 @@
                                     <img src="images/repair.png" alt="">
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="submit-btn text-center pt-4">
-                            <button type="button">Submit</button>
+                            <button type="submit" name="job_submit">Submit</button>
                         </div>
                     </form>
                 </div>

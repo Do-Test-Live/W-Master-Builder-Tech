@@ -44,7 +44,7 @@
                     <p>Maintenance <br>& <br> Install</p>
                 </div>
                 <div class="desired-box desired2">
-                    <a href="renovation.html">
+                    <a href="renovation.php">
                         <p>Renovation</p>
 
                     </a>
