@@ -85,8 +85,8 @@ VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','
                             <input type="text" id="r4" name="address" placeholder="Address" required>
                         </div>
                         <div class="renovat-item">
-                            <label for="r5">Time</label>
-                            <input type="time" id="r5" name="time" placeholder="" required>
+                            <label for="r5">Date</label>
+                            <input type="date" id="r5" name="time" placeholder="" required>
                         </div>
                         <div class="renovat-item">
                             <label for="r6">Budget</label>
@@ -103,7 +103,7 @@ VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','
                         </div>
                         <div class="renovat-item renovat2">
                             <p>Desctription</p>
-                            <textarea name="description" required id="" cols="30" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                            <textarea name="description" required id="" cols="30" rows="4"></textarea>
                         </div>
                         <div class="renovat-item">
                             <label for="r6">Image</label>

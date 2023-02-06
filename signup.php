@@ -70,11 +70,11 @@ if (isset($_POST["signup"])) {
             <form action="#" method="post">
                 <div class="email-box">
                     <label for="a1">Phone</label>
-                    <input type="tel" name="phone" id="a1" placeholder="12341234" required>
+                    <input type="tel" name="phone" id="a1" placeholder="" required>
                 </div>
                 <div class="email-box">
                     <label for="a2">Full Name</label>
-                    <input type="text" name="name" id="a2" placeholder="Name Name Name" required>
+                    <input type="text" name="name" id="a2" placeholder="" required>
                 </div>
                 <div class="email-box">
                     <label for="disabledSelect" class="form-label">Choose Your Role</label>
@@ -85,19 +85,19 @@ if (isset($_POST["signup"])) {
                 </div>
                 <div class="email-box">
                     <label for="a3">Email</label>
-                    <input type="email" name="email" id="a3" placeholder="Email Here" required>
+                    <input type="email" name="email" id="a3" placeholder="" required>
                 </div>
                 <div class="email-box">
                     <label for="pass_log_id">Password</label>
                     <div class="hideshow-pass">
-                        <input id="pass_log_id" type="password" name="password" placeholder="password1234"
+                        <input id="pass_log_id" type="password" name="password"
                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>
                     </div>
                 </div>
                 <div class="email-box">
                     <label for="addr">Address</label>
-                    <textarea name="address" id="addr" cols="30" rows="4" placeholder="0001, EST, HK"></textarea>
+                    <textarea name="address" id="addr" cols="30" rows="4" placeholder=""></textarea>
                 </div>
                 <div class="submit-btn text-center">
                     <button type="submit" name="signup">Submit</button>

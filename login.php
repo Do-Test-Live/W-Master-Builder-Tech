@@ -72,19 +72,19 @@ if (isset($_POST['login'])) {
                 <div class="email-box">
                     <label for="pass_log_id">Password</label>
                     <div class="hideshow-pass">
-                        <input id="pass_log_id" type="password" name="password" value="password1234" required>
+                        <input id="pass_log_id" type="password" name="password" required>
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>
                     </div>
                 </div>
-                <div class="help-cnt">
-                    <p>Need any help?</p>
-                </div>
-
                 <div class="help-cnt">
                     <a href="signup.php">
                         <p>Sign Up</p>
                     </a>
                 </div>
+                <div class="help-cnt">
+                    <p>Need any help?</p>
+                </div>
+
                 <div class="submit-btn text-center">
                     <button type="submit" name="login">Login</button>
                 </div>

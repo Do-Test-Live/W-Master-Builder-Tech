@@ -103,7 +103,7 @@ img {
 
 .email-box input::placeholder,
 .email-box textarea::placeholder {
-    color: #200B00;
+    color: #85817f;
     opacity: 1;
 }
 
@@ -289,7 +289,7 @@ img {
     font-family: 'Crimson Text', serif;
     font-weight: 700;
     font-size: 24px;
-    text-align: right;
+    text-align: center;
     color: #200B00;
     margin: 0;
 }
@@ -304,11 +304,11 @@ img {
     font-weight: 700;
     font-size: 36px;
     color: #200B00;
-    transform: rotate(-90deg);
+    /*transform: rotate(-90deg);*/
     margin: 0;
-    position: absolute;
+    /*position: absolute;
     left: -47px;
-    top: 42px;
+    top: 42px;*/
 }
 
 .desired-item {
@@ -1059,7 +1059,7 @@ img {
 
 .renovat-item input::placeholder {
     opacity: 1;
-    color: #200B00;
+    color: #817e7c;
 }
 
 .renovat2 {

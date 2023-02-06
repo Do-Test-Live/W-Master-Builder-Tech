@@ -34,7 +34,7 @@
 <main class="main-wrapper">
     <div class="main-part main-partbg2">
         <div class="build-masttitle">
-            <h2>Building <br> Master</h2>
+            <h2>Building <br> Master Tech</h2>
         </div>
 
         <div class="desired-part">
