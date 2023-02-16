@@ -81,35 +81,9 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="footer-part">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <img src="images/master.svg" alt=""> 
-                                <img src="images/master-active.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="images/messages.svg" alt="">
-                                <img src="images/messages-active.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="images/user.svg" alt="">
-                                <img src="images/user-active.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="images/settings.svg" alt="">
-                                <img src="images/settings-active.svg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <?php
+                include ('include/footer.php');
+                ?>
             </div>
         </main>
         <!-- main-wrapper end -->

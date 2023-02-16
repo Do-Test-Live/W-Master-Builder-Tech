@@ -41,25 +41,34 @@
             <h2>Desired</h2>
             <div class="desired-item">
                 <div class="desired-box desired1">
+                    <a href="booking.php?id=1">
                     <p>Maintenance <br>& <br> Install</p>
+                    </a>
                 </div>
                 <div class="desired-box desired2">
-                    <a href="renovation.php">
+                    <a href="booking.php?id=2">
                         <p>Renovation</p>
-
                     </a>
                 </div>
                 <div class="desired-box desired3">
+                    <a href="booking.php?id=3">
                     <p>Move house <br>servise</p>
+                    </a>
                 </div>
                 <div class="desired-box desired4">
+                    <a href="booking.php?id=4">
                     <p>Radiator <br>service</p>
+                    </a>
                 </div>
                 <div class="desired-box desired5">
-                    <p>Cleaning <br>servise</p>
+                    <a href="booking.php?id=5">
+                    <p>Cleaning <br>service</p>
+                    </a>
                 </div>
                 <div class="desired-box desired6">
+                    <a href="booking.php?id=6">
                     <p>Whole <br>house <br>decoration</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -68,66 +77,61 @@
             <h2 class="desired-ttl2">Referral</h2>
             <div class="desired-item">
                 <div class="desired-box desired7">
-                    <p>Electric <br> Lamp <br> safty camera</p>
+                    <a href="booking.php?id=7">
+                    <p>Electric <br> Lamp <br> safety camera</p>
+                    </a>
                 </div>
                 <div class="desired-box desired8">
+                    <a href="booking.php?id=8">
                     <p>Water tap <br>Plumbing</p>
+                    </a>
                 </div>
                 <div class="desired-box desired9">
+                    <a href="booking.php?id=9">
                     <p>Cleaning Roof</p>
+                    </a>
                 </div>
                 <div class="desired-box desired10">
+                    <a href="booking.php?id=10">
                     <p>Painting <br>works</p>
+                    </a>
                 </div>
                 <div class="desired-box desired11">
+                    <a href="booking.php?id=11">
                     <p>Door <br>Lock</p>
+                    </a>
                 </div>
                 <div class="desired-box desired12">
+                    <a href="booking.php?id=12">
                     <p>Aluminium <br>Window <br>door</p>
+                    </a>
                 </div>
                 <div class="desired-box desired13">
+                    <a href="booking.php?id=13">
                     <p>Radiator <br>service</p>
+                    </a>
                 </div>
                 <div class="desired-box desired14">
+                    <a href="booking.php?id=14">
                     <p>Disinfection</p>
+                    </a>
                 </div>
                 <div class="desired-box desired15">
+                    <a href="booking.php?id=15">
                     <p>Pest <br>Control</p>
+                    </a>
                 </div>
                 <div class="desired-box desired16">
+                    <a href="booking.php?id=16">
                     <p>Electric <br>Boiler <br>inspection</p>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div class="footer-part">
-            <ul>
-                <li>
-                    <a href="#" id="active">
-                        <img src="images/master.svg" alt="">
-                        <img src="images/master-active.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="comment.html">
-                        <img src="images/messages.svg" alt="">
-                        <img src="images/messages-active.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="login.php">
-                        <img src="images/user.svg" alt="">
-                        <img src="images/user-active.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="settings.html">
-                        <img src="images/settings.svg" alt="">
-                        <img src="images/settings-active.svg" alt="">
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <?php
+        include ('include/footer.php');
+        ?>
     </div>
 </main>
 <!-- main-wrapper end -->

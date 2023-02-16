@@ -1,5 +1,12 @@
 <?php
 include ("config/dbconfig.php");
+$cat_id = $_GET['id'];
+$cat_select = $con->query("select cat_name from category where cat_id = '$cat_id'");
+if($cat_select){
+    while ($cat_data = mysqli_fetch_assoc($cat_select)){
+        $cat_name = $cat_data['cat_name'];
+    }
+}
 if (isset($_POST['job_submit'])){
     $name = mysqli_real_escape_string($con,$_POST['name']);
     $contact = mysqli_real_escape_string($con,$_POST['contact']);
@@ -17,8 +24,8 @@ if (isset($_POST['job_submit'])){
         echo "wrong file extension";
     }else{
         if(move_uploaded_file($c_image_temp , "images/jobs/$c_image")){
-            $insert_job = $con->query("INSERT INTO `jobs`(`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`) 
-VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image')");
+            $insert_job = $con->query("INSERT INTO `jobs`(`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`,`cat_name`) 
+VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image','$cat_name')");
             if($insert_job){
                 header('Location: index.php');
             }
@@ -64,7 +71,7 @@ VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','
         <main class="main-wrapper">
             <div class="main-part">
                 <div class="heading-cnt">
-                    <h1>Renovation</h1>
+                    <h1><?php echo $cat_name;?></h1>
                 </div>
                 <div class="content-part">
                     <form action="#" method="post" enctype="multipart/form-data">
