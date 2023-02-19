@@ -35,8 +35,8 @@
     <div class="main-part main-partbg2">
         <div class="build-masttitle" style="text-align: end;" >
             <select class="form-select" aria-label="Default select example" style="display: inline; font-weight: bold;" onchange="window.location.href = this.value;">
-                <option selected style="font-weight: bold;" value="index.php">中文</option>
-                <option value="home_eng.php" style="font-weight: bold;">ENG</option>
+                <option selected style="font-weight: bold;" value="home_eng.php">ENG</option>
+                <option style="font-weight: bold;" value="index.php">中文</option>
             </select>
         </div>
 
@@ -46,10 +46,10 @@
 
         <div class="desired-part">
             <div class="row text-center mt-5">
-                <h4>師傅配對 預先審查</h4>
-                    <h4>師傅均通過驗證，質素保證</h4>
-                <h4>免費配對附近師傅</h4>
-                   <h4> 一般距離用戶約10英里內</h4>
+                <h4>Master Matching Pre-Review</h4>
+                <h4>The masters have passed the verification, quality assurance</h4>
+                <h4>Free matching with nearby masters</h4>
+                <h4>Generally within about 10 miles from the user</h4>
             </div>
         </div>
         <div class="submit-btn text-center mt-3">

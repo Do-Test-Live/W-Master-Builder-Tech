@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
             if (Password_verify($Pwd_peppered, $pass) && $row['status'] == 1 && $row['type'] == 0) {
                 session_start();
                 $_SESSION["id"] = $row['id'];
-                header("Location: index.php");
+                header("Location: category.php");
             } else {
                 $result = 2;
             }

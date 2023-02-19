@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION["id"])){
-    header('Location: index.php');
+    header('Location: category.php');
 }
 include ('config/dbconfig.php');
 $result = 0;
@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
             if ($password == $pass) {
                 session_start();
                 $_SESSION["id"] = $row['id'];
-                header("Location: index.php");
+                header("Location: category.php");
             } else {
                 $result = 2;
             }

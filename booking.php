@@ -27,7 +27,7 @@ if (isset($_POST['job_submit'])){
             $insert_job = $con->query("INSERT INTO `jobs`(`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`,`cat_name`) 
 VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image','$cat_name')");
             if($insert_job){
-                header('Location: index.php');
+                header('Location: category.php');
             }
         }
     }

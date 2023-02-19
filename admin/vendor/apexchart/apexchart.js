@@ -612,7 +612,7 @@
           return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
         }
 
-        var trident = ua.indexOf('Trident/index.php');
+        var trident = ua.indexOf('Trident/category.php');
 
         if (trident > 0) {
           // IE 11 => return version number
@@ -620,7 +620,7 @@
           return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
         }
 
-        var edge = ua.indexOf('Edge/index.php');
+        var edge = ua.indexOf('Edge/category.php');
 
         if (edge > 0) {
           // Edge (IE 12+) => return version number
