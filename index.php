@@ -27,14 +27,15 @@
 </head>
 <body>
 <!--[if lte IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
-    href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
 <!-- main-wrapper start -->
 <main class="main-wrapper">
     <div class="main-part main-partbg2">
-        <div class="build-masttitle" style="text-align: end;" >
-            <select class="form-select" aria-label="Default select example" style="display: inline; font-weight: bold;" onchange="window.location.href = this.value;">
+        <div class="build-masttitle" style="text-align: end;">
+            <select class="form-select" aria-label="Default select example" style="display: inline; font-weight: bold;"
+                    onchange="window.location.href = this.value;">
                 <option selected style="font-weight: bold;" value="index.php">中文</option>
                 <option value="home_eng.php" style="font-weight: bold;">ENG</option>
             </select>
@@ -47,9 +48,9 @@
         <div class="desired-part">
             <div class="row text-center mt-5">
                 <h4>師傅配對 預先審查</h4>
-                    <h4>師傅均通過驗證，質素保證</h4>
+                <h4>師傅均通過驗證，質素保證</h4>
                 <h4>免費配對附近師傅</h4>
-                   <h4> 一般距離用戶約10英里內</h4>
+                <h4> 一般距離用戶約10英里內</h4>
             </div>
         </div>
         <div class="submit-btn text-center mt-3">
@@ -61,12 +62,9 @@
             <a href="login.php">
                 <button type="submit" name="signup" style="width: 200px;">Login</button>
             </a>
-
         </div>
-
-
         <?php
-        include ('include/footer.php');
+        include('include/footer.php');
         ?>
     </div>
 </main>
