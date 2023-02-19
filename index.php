@@ -54,12 +54,12 @@
         </div>
         <div class="submit-btn text-center mt-3">
             <a href="signup.php">
-                <button type="submit" name="signup">Become Member</button>
+                <button type="submit" name="signup" style="width: 200px;">Become Member</button>
             </a>
         </div>
         <div class="submit-btn text-center mt-3">
             <a href="login.php">
-                <button type="submit" name="signup">Login</button>
+                <button type="submit" name="signup" style="width: 200px;">Login</button>
             </a>
 
         </div>
