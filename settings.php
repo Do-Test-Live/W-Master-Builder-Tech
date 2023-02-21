@@ -65,6 +65,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="submit-btn text-center mt-3">
+                        <a href="#">
+                            <button type="submit" name="signup" style="width: 200px;">Save</button>
+                        </a>
+                    </div>
                 </div>
 
                 <?php

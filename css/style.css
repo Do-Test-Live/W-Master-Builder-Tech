@@ -844,9 +844,9 @@ select, option{
 /*=== comment-page start ===*/
 .comment-textcnt .record-cntbox p {
     width: 284px;
-    white-space: nowrap; 
+    /*white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;*/
 }
 
 .settings-part {

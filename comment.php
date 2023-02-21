@@ -38,18 +38,38 @@
                 <div class="content-part">
                     <div class="block-mstbox comment-textcnt">
                         <h6>Mr. Wong</h6>
+                        <div class="container">
+                            <div class="row flex align-items-center justify-content-center">
+                                <img src="images/review/1.png" alt="review image" style="padding: 0 !important;">
+                            </div>
+                        </div>
                         <div class="record-cntbox">
                             <p>This is great platfotm finding master.</p>
                         </div>
                         <h6>Mr. Ying</h6>
+                        <div class="container">
+                            <div class="row flex align-items-center justify-content-center">
+                                <img src="images/review/2.png" alt="review image" style="padding: 0 !important;">
+                            </div>
+                        </div>
                         <div class="record-cntbox">
                             <p>Easy to find qualified masters from this platform. Recommended.</p>
                         </div>
                         <h6>Mr. Chun</h6>
+                        <div class="container">
+                            <div class="row flex align-items-center justify-content-center">
+                                <img src="images/review/3.png" alt="review image" style="padding: 0 !important;">
+                            </div>
+                        </div>
                         <div class="record-cntbox">
                             <p>Beautiful platform for the masters to find new jobs for them.</p>
                         </div>
                         <h6>Mr. Cheuk</h6>
+                        <div class="container">
+                            <div class="row flex align-items-center justify-content-center">
+                                <img src="images/review/4.png" alt="review image" style="padding: 0 !important;">
+                            </div>
+                        </div>
                         <div class="record-cntbox">
                             <p>All the masters here know there jobs very well. I am completely satisfy with their works.</p>
                         </div>
