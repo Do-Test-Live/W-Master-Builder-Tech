@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2023 at 07:26 AM
+-- Generation Time: Feb 22, 2023 at 10:02 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -101,7 +101,10 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`id`, `cat_name`, `name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Cleaning service', 'Test', '000000', '9100', 'Test', '2023-02-17', '500', 1, 'Test Description', '6 (3).png', 1, '2023-02-16 05:47:36', '2023-02-16 05:47:36');
+(1, '', 'Test', '000000', '0000', 'Test', '2023-02-06', '500', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '6 (3).png', 0, '2023-02-04 10:35:02', '2023-02-04 10:35:02'),
+(2, '', 'Frans', '123', '0000', 'Hk', '2023-02-06', '10000', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '338B9AFB-FD25-419F-AB3A-166F2BEAC1A0.png', 0, '2023-02-05 21:22:25', '2023-02-05 21:22:25'),
+(3, '', 'Ray', '07548382818', 'M12ha', '14 victory st', '2023-02-15', '??', 1, 'Replace floor tile', '94AF6E96-F50E-4AFC-93D6-4676E0A7F5B8.jpeg', 1, '2023-02-06 16:24:46', '2023-02-06 16:24:46'),
+(4, 'Renovation', 'Amen', '07548382819', 'M14hq', '14', '2023-02-24', '100', 1, 'Floor', '194D24AF-CD4E-42D1-8579-3C828C68A822.jpeg', 0, '2023-02-18 10:10:53', '2023-02-18 10:10:53');
 
 -- --------------------------------------------------------
 
@@ -116,7 +119,8 @@ CREATE TABLE `user` (
   `user_email` varchar(255) NOT NULL,
   `address` text NOT NULL,
   `password` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `vcode` int(10) NOT NULL,
   `type` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -126,10 +130,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `phone`, `name`, `user_email`, `address`, `password`, `status`, `type`, `created_at`, `updated_at`) VALUES
-(1, '00000000000', 'Test', 'test@test.com', 'test', '$argon2id$v=19$m=65536,t=4,p=1$NHE2bjZkSlR4MlAzV3NtSQ$Y+GdpvAlGOCRscX0P8Pls9mUdi1lpPF6zGJFtAs5ubY', 1, 0, '2023-02-04 10:33:43', '2023-02-04 10:33:43'),
-(2, '9494', 'jsjsj', 'Francis00358@gmail.com', 'hk', '$argon2id$v=19$m=65536,t=4,p=1$b3VhV2VSN0U3SlNFRm5paA$VIaDeCjqu0E8XZH7oNwyTy9z/WxQAjpMKbE40IDSJ+E', 1, 1, '2023-02-05 21:28:46', '2023-02-05 21:28:46'),
-(3, '00000000000', 'Test', 'test@gmail.com', 'test', '$argon2id$v=19$m=65536,t=4,p=1$LkF0amliR2ViTnBZZmx4Nw$k2jywcIvpuOB6k/lhp2rbvKnh1mRYiQWHDNrsrnom9Y', 1, 0, '2023-02-06 06:18:36', '2023-02-06 06:18:36');
+INSERT INTO `user` (`id`, `phone`, `name`, `user_email`, `address`, `password`, `status`, `vcode`, `type`, `created_at`, `updated_at`) VALUES
+(1, '01799039179', 'M. Ahmed', 'superadmin1@oms.com', '64/2 South Tutpara Circular Road', '$argon2id$v=19$m=65536,t=4,p=1$VExuZW0xVDltbEtRNW9PYw$WDIqvHt8jLNhiA7bM1DMVi4x356Sq3cIBItUZfOyojs', 0, 498375, 0, '2023-02-22 08:12:36', '2023-02-22 08:12:36'),
+(2, '00000000000', 'M. Ahmed', 'test@test.com', '64/2 South Tutpara Circular Road', '$argon2id$v=19$m=65536,t=4,p=1$YmJ3Wk80c3p1c1Q5Q3ZnTw$3TJFIwvAr6usCyrL9sxW10aNqZegcs0alPZ/wGsN6A0', 0, 687386, 0, '2023-02-22 08:13:52', '2023-02-22 08:13:52');
 
 --
 -- Indexes for dumped tables
@@ -179,13 +182,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -11,17 +11,44 @@ if (isset($_POST["signup"])) {
     $key = 'master-builder';
     $Pwd_peppered = Hash_hmac("Sha256", $password, $key);
     $Pwd_hashed = Password_hash($Pwd_peppered, PASSWORD_ARGON2ID);
+    $v_code = rand(100000, 999999);
 
     $email_check = $con->query("select id from user where useremail = '$email'");
     if ($email_check->num_rows > 0) {
         $result = 1;
     } else {
-        $signup_query = $con->query("INSERT INTO `user`(`phone`, `name`, `user_email`, `address`, `password`, `type`) VALUES ('$phone','$name','$email','$address','$Pwd_hashed','$type')");
+        $signup_query = $con->query("INSERT INTO `user`(`phone`, `name`, `user_email`, `address`, `password`, `type`,`vcode`) VALUES ('$phone','$name','$email','$address','$Pwd_hashed','$type','$v_code')");
         if ($signup_query) {
             $result = 2;
-            header('Location: login.php');
+            $email_to = $email;
+            $subject = 'Verify your email.';
+
+
+            $headers = "From: Building Master Tech <mingowhk@gmail.com>\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+            $messege = "
+            <html>
+                <body style='background-color: #eee; font-size: 16px;'>
+                <div style='max-width: 600px; min-width: 200px; background-color: #ffffff; padding: 20px; margin: auto;'>
+                
+                    <p style='text-align: center;color:green;font-weight:bold'>Thank you for reaching out to us!</p>
+                
+                    <p style='color:black;text-align: center'>
+                        6 digit authentication code for your email verification is : <strong>$v_code</strong>
+                    </p>
+                </div>
+                </body>
+            </html>";
+
+            if (mail($email_to, $subject, $messege, $headers)) {
+                session_start();
+                $_SESSION["email"] = $email;
+                Header("Location: email_verify.php");
+            }
         } else {
-            $result = 3;
+            echo "something went wrong";
+            $value = 1;
         }
     }
 }
@@ -88,7 +115,7 @@ if (isset($_POST["signup"])) {
                     <input type="email" name="email" id="a3" placeholder="" required>
                 </div>
                 <div class="email-box">
-                    <label for="pass_log_id">Password</label>
+                    <label for="pass_log_id">Password <span style="font-size: 12px;">(At least 1 Capital Letter, 1 small letter, 1 number and 1 special character)</span></label>
                     <div class="hideshow-pass">
                         <input id="pass_log_id" type="password" name="password"
                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
@@ -104,34 +131,9 @@ if (isset($_POST["signup"])) {
                 </div>
             </form>
         </div>
-        <div class="footer-part">
-            <ul>
-                <li>
-                    <a href="#">
-                        <img src="images/master.svg" alt="">
-                        <img src="images/master-active.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="images/messages.svg" alt="">
-                        <img src="images/messages-active.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" id="active">
-                        <img src="images/user.svg" alt="">
-                        <img src="images/user-active.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="images/settings.svg" alt="">
-                        <img src="images/settings-active.svg" alt="">
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <?php
+        include("include/footer.php");
+        ?>
     </div>
 </main>
 <!-- main-wrapper end -->
