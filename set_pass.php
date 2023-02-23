@@ -54,7 +54,7 @@ if (isset($_POST['login'])) {
 </head>
 <body>
 <!--[if lte IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
-        href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
 <!-- main-wrapper start -->
@@ -67,25 +67,11 @@ if (isset($_POST['login'])) {
         <div class="content-part">
             <form action="#" method="post">
                 <div class="email-box">
-                    <label for="a1">Email</label>
-                    <input type="email" name="email" id="a1" placeholder="Email Here" required>
-                </div>
-                <div class="email-box">
                     <label for="pass_log_id">Password</label>
                     <div class="hideshow-pass">
                         <input id="pass_log_id" type="password" name="password" required>
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>
                     </div>
-                </div>
-                <div class="help-cnt">
-                    <a href="signup.php">
-                        <p>Sign Up</p>
-                    </a>
-                </div>
-                <div class="help-cnt">
-                    <a href="forget_pass.php">
-                        <p>Forget Password</p>
-                    </a>
                 </div>
 
                 <div class="submit-btn text-center">

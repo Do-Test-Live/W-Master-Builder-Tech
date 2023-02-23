@@ -1,22 +1,38 @@
 <?php
 include("config/dbconfig.php");
 $result = 0;
-if (isset($_POST['login'])) {
+if (isset($_POST['verify_email'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
+    /*$password = mysqli_real_escape_string($con, $_POST['password']);
     $key = 'master-builder';
-    $Pwd_peppered = Hash_hmac("Sha256", $password, $key);
-    $query = $con->query("select `password`,`status`,`id`,`type` from user where `user_email` = '$email'");
+    $Pwd_peppered = Hash_hmac("Sha256", $password, $key);*/
+    $query = $con->query("select `vcode` from user where `user_email` = '$email'");
     if ($query->num_rows == 1) {
         while ($row = mysqli_fetch_assoc($query)) {
-            $pass = $row["password"];
-            if (Password_verify($Pwd_peppered, $pass) && $row['status'] == 1) {
-                session_start();
-                $_SESSION["id"] = $row['id'];
-                header("Location: category.php");
-            }
-            else {
-                $result = 2;
+            $vcode = $row['vcode'];
+            $email_to = $email;
+            $subject = 'Verify your email.';
+
+
+            $headers = "From: Building Master Tech <mingowhk@gmail.com>\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+            $messege = "
+            <html>
+                <body style='background-color: #eee; font-size: 16px;'>
+                <div style='max-width: 600px; min-width: 200px; background-color: #ffffff; padding: 20px; margin: auto;'>
+                
+                    <p style='text-align: center;color:green;font-weight:bold'>Thank you for reaching out to us!</p>
+                
+                    <p style='color:black;text-align: center'>
+                        6 digit authentication code for your email verification is : <strong>$vcode</strong>
+                    </p>
+                </div>
+                </body>
+            </html>";
+
+            if (mail($email_to, $subject, $messege, $headers)) {
+                Header("Location: verify_email.php?email=".$email);
             }
         }
     } else {
@@ -54,7 +70,7 @@ if (isset($_POST['login'])) {
 </head>
 <body>
 <!--[if lte IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
-        href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
 <!-- main-wrapper start -->
@@ -70,26 +86,9 @@ if (isset($_POST['login'])) {
                     <label for="a1">Email</label>
                     <input type="email" name="email" id="a1" placeholder="Email Here" required>
                 </div>
-                <div class="email-box">
-                    <label for="pass_log_id">Password</label>
-                    <div class="hideshow-pass">
-                        <input id="pass_log_id" type="password" name="password" required>
-                        <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>
-                    </div>
-                </div>
-                <div class="help-cnt">
-                    <a href="signup.php">
-                        <p>Sign Up</p>
-                    </a>
-                </div>
-                <div class="help-cnt">
-                    <a href="forget_pass.php">
-                        <p>Forget Password</p>
-                    </a>
-                </div>
 
                 <div class="submit-btn text-center">
-                    <button type="submit" name="login">Login</button>
+                    <button type="submit" name="verify_email">Verify Email</button>
                 </div>
             </form>
         </div>

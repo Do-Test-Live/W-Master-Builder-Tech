@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
             if ($password == $pass) {
                 session_start();
                 $_SESSION["id"] = $row['id'];
-                header("Location: category.php");
+                header("Location: index.php");
             } else {
                 $result = 2;
             }

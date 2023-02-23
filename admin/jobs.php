@@ -193,6 +193,7 @@ include ('config/dbconfig.php');
                                         <th>Desctription</th>
                                         <th>Image</th>
                                         <th>Status</th>
+                                        <th>Master Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -243,6 +244,22 @@ include ('config/dbconfig.php');
                                                         <span class="badge light badge-success">
 														<i class="fa fa-circle text-success me-1"></i>
 														Approved
+													</span>
+                                                        <?php
+                                                    }?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($data['master_status'] == 0){?>
+                                                        <span class="badge light badge-danger">
+														<i class="fa fa-circle text-danger me-1"></i>
+														Pending
+													</span>
+                                                        <?php
+                                                    }else {
+                                                        ?>
+                                                        <span class="badge light badge-success">
+														<i class="fa fa-circle text-success me-1"></i>
+														Booked
 													</span>
                                                         <?php
                                                     }?>
