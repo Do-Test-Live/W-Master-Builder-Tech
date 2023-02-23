@@ -18,12 +18,18 @@
                 <img src="images/messages-active.svg" alt="">
             </a>
         </li>
-        <li>
-            <a href="login.php">
-                <img src="images/user.svg" alt="">
-                <img src="images/user-active.svg" alt="">
-            </a>
-        </li>
+        <?php
+        if(isset($_SESSION['id'])){
+            ?>
+            <li>
+                <a href="job_details.php">
+                    <img src="images/user.svg" alt="">
+                    <img src="images/user-active.svg" alt="">
+                </a>
+            </li>
+            <?php
+        }
+        ?>
         <!--<li>
             <a href="settings.php">
                 <img src="images/settings.svg" alt="">

@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['id'])) {
+    ?>
+    <script>
+        alert("Please login first to post a job.");
+    </script>
+    <?php
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -37,12 +48,24 @@
             <h2>Building <br> Master Tech</h2>
         </div>
 
+        <?php
+        if (isset($_SESSION['success'])) {
+            ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Job has been posted successfully.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            unset($_SESSION['success']);
+        }
+        ?>
+
         <div class="desired-part">
             <h2>Desired</h2>
             <div class="desired-item">
                 <div class="desired-box desired1">
                     <a href="booking.php?id=1">
-                    <p>Maintenance <br>& <br> Install</p>
+                        <p>Maintenance <br>& <br> Install</p>
                     </a>
                 </div>
                 <div class="desired-box desired2">
@@ -52,22 +75,22 @@
                 </div>
                 <div class="desired-box desired3">
                     <a href="booking.php?id=3">
-                    <p>Move house <br>servise</p>
+                        <p>Move house <br>servise</p>
                     </a>
                 </div>
                 <div class="desired-box desired4">
                     <a href="booking.php?id=4">
-                    <p>Radiator <br>service</p>
+                        <p>Radiator <br>service</p>
                     </a>
                 </div>
                 <div class="desired-box desired5">
                     <a href="booking.php?id=5">
-                    <p>Cleaning <br>service</p>
+                        <p>Cleaning <br>service</p>
                     </a>
                 </div>
                 <div class="desired-box desired6">
                     <a href="booking.php?id=6">
-                    <p>Whole <br>house <br>decoration</p>
+                        <p>Whole <br>house <br>decoration</p>
                     </a>
                 </div>
             </div>
@@ -78,59 +101,59 @@
             <div class="desired-item">
                 <div class="desired-box desired7">
                     <a href="booking.php?id=7">
-                    <p>Electric <br> Lamp <br> safety camera</p>
+                        <p>Electric <br> Lamp <br> safety camera</p>
                     </a>
                 </div>
                 <div class="desired-box desired8">
                     <a href="booking.php?id=8">
-                    <p>Water tap <br>Plumbing</p>
+                        <p>Water tap <br>Plumbing</p>
                     </a>
                 </div>
                 <div class="desired-box desired9">
                     <a href="booking.php?id=9">
-                    <p>Cleaning Roof</p>
+                        <p>Cleaning Roof</p>
                     </a>
                 </div>
                 <div class="desired-box desired10">
                     <a href="booking.php?id=10">
-                    <p>Painting <br>works</p>
+                        <p>Painting <br>works</p>
                     </a>
                 </div>
                 <div class="desired-box desired11">
                     <a href="booking.php?id=11">
-                    <p>Door <br>Lock</p>
+                        <p>Door <br>Lock</p>
                     </a>
                 </div>
                 <div class="desired-box desired12">
                     <a href="booking.php?id=12">
-                    <p>Aluminium <br>Window <br>door</p>
+                        <p>Aluminium <br>Window <br>door</p>
                     </a>
                 </div>
                 <div class="desired-box desired13">
                     <a href="booking.php?id=13">
-                    <p>Radiator <br>service</p>
+                        <p>Radiator <br>service</p>
                     </a>
                 </div>
                 <div class="desired-box desired14">
                     <a href="booking.php?id=14">
-                    <p>Disinfection</p>
+                        <p>Disinfection</p>
                     </a>
                 </div>
                 <div class="desired-box desired15">
                     <a href="booking.php?id=15">
-                    <p>Pest <br>Control</p>
+                        <p>Pest <br>Control</p>
                     </a>
                 </div>
                 <div class="desired-box desired16">
                     <a href="booking.php?id=16">
-                    <p>Electric <br>Boiler <br>inspection</p>
+                        <p>Electric <br>Boiler <br>inspection</p>
                     </a>
                 </div>
             </div>
         </div>
 
         <?php
-        include ('include/footer.php');
+        include('include/footer.php');
         ?>
     </div>
 </main>

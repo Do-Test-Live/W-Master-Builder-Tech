@@ -42,8 +42,14 @@ if (isset($_POST["signup"])) {
             </html>";
 
             if (mail($email_to, $subject, $messege, $headers)) {
+                $select = $con->query("select id from user where `user_email` = '$email'");
+                if($select){
+                    while($row = mysqli_fetch_assoc($select)){
+                        $id = $row['id'];
+                    }
+                }
                 session_start();
-                $_SESSION["email"] = $email;
+                $_SESSION["id"] = $id;
                 Header("Location: email_verify.php");
             }
         } else {

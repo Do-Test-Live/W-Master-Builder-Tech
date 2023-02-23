@@ -10,11 +10,12 @@ if (isset($_POST['login'])) {
     if ($query->num_rows == 1) {
         while ($row = mysqli_fetch_assoc($query)) {
             $pass = $row["password"];
-            if (Password_verify($Pwd_peppered, $pass) && $row['status'] == 1 && $row['type'] == 0) {
+            if (Password_verify($Pwd_peppered, $pass) && $row['status'] == 1) {
                 session_start();
                 $_SESSION["id"] = $row['id'];
                 header("Location: category.php");
-            } else {
+            }
+            else {
                 $result = 2;
             }
         }

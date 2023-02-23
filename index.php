@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -53,16 +57,31 @@
                 <h4> 一般距離用戶約10英里內</h4>
             </div>
         </div>
-        <div class="submit-btn text-center mt-3">
-            <a href="signup.php">
-                <button type="submit" name="signup" style="width: 200px;">Become Member</button>
-            </a>
-        </div>
-        <div class="submit-btn text-center mt-3">
-            <a href="login.php">
-                <button type="submit" name="signup" style="width: 200px;">Login</button>
-            </a>
-        </div>
+        <?php
+        if (!isset($_SESSION['id'])) {
+            ?>
+            <div class="submit-btn text-center mt-3">
+                <a href="signup.php">
+                    <button type="submit" name="signup" style="width: 200px;">Become Member</button>
+                </a>
+            </div>
+            <div class="submit-btn text-center mt-3">
+                <a href="login.php">
+                    <button type="submit" name="signup" style="width: 200px;">Login</button>
+                </a>
+            </div>
+            <?php
+        } else {
+            ?>
+            <div class="submit-btn text-center mt-3">
+                <a href="logout.php">
+                    <button type="submit" name="signup" style="width: 200px;">Logout</button>
+                </a>
+            </div>
+            <?php
+        }
+        ?>
+
         <?php
         include('include/footer.php');
         ?>

@@ -2,12 +2,21 @@
 include("config/dbconfig.php");
 $result = 0;
 session_start();
-$email = $_SESSION["email"];
+$id = $_SESSION["id"];
+
+$select = $con->query("select * from user where `id` = '$id'");
+if($select){
+    while($row = mysqli_fetch_assoc($select)){
+        $email = $row['user_email'];
+    }
+}
 
 if (isset($_POST['verify_email'])) {
     $v_code = mysqli_real_escape_string($con, $_POST['v_code']);
     $update_query = $con->query("UPDATE `user` SET `status`='1' WHERE `user_email` = '$email' and `vcode` = '$v_code'");
     if ($update_query) {
+        session_start();
+        $_SESSION['id'] = $id;
         header('Location: category.php');
     } else {
         header('Location: index.php');

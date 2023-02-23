@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['id'])){
+    header('Location: index.php');
+}else{
+    $id = $_SESSION['id'];
+}
 include ("config/dbconfig.php");
 $cat_id = $_GET['id'];
 $cat_select = $con->query("select cat_name from category where cat_id = '$cat_id'");
@@ -24,9 +30,10 @@ if (isset($_POST['job_submit'])){
         echo "wrong file extension";
     }else{
         if(move_uploaded_file($c_image_temp , "images/jobs/$c_image")){
-            $insert_job = $con->query("INSERT INTO `jobs`(`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`,`cat_name`) 
-VALUES ('$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image','$cat_name')");
+            $insert_job = $con->query("INSERT INTO `jobs`(`user_id`,`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`,`cat_name`) 
+VALUES ('$id','$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image','$cat_name')");
             if($insert_job){
+                $_SESSION['success'] = 'success';
                 header('Location: category.php');
             }
         }
