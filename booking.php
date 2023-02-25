@@ -13,6 +13,15 @@ if($cat_select){
         $cat_name = $cat_data['cat_name'];
     }
 }
+
+$select_status = $con->query("select * from job_status");
+if($select_status){
+    while ($status = mysqli_fetch_assoc($select_status)){
+        $s = $status['status'];
+    }
+}
+
+
 if (isset($_POST['job_submit'])){
     $name = mysqli_real_escape_string($con,$_POST['name']);
     $contact = mysqli_real_escape_string($con,$_POST['contact']);
@@ -30,8 +39,8 @@ if (isset($_POST['job_submit'])){
         echo "wrong file extension";
     }else{
         if(move_uploaded_file($c_image_temp , "images/jobs/$c_image")){
-            $insert_job = $con->query("INSERT INTO `jobs`(`user_id`,`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`,`cat_name`) 
-VALUES ('$id','$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image','$cat_name')");
+            $insert_job = $con->query("INSERT INTO `jobs`(`user_id`,`name`, `contact`, `post_code`, `address`, `time`, `budget`, `license`, `desctription`, `image`,`cat_name`,`status`) 
+VALUES ('$id','$name','$contact','$postcode','$address','$time','$budget','$license','$description','$c_image','$cat_name','$s')");
             if($insert_job){
                 $_SESSION['success'] = 'success';
                 header('Location: category.php');

@@ -149,6 +149,11 @@ include('config/dbconfig.php');
                         <span class="nav-text">Jobs</span>
                     </a>
                 </li>
+                <li><a class="ai-icon" href="status.php" aria-expanded="false">
+                        <i class="flaticon-025-dashboard"></i>
+                        <span class="nav-text">Status</span>
+                    </a>
+                </li>
             </ul>
             <div class="copyright">
                 <p><strong>Master Builder Tech</strong>All Rights Reserved</p>
