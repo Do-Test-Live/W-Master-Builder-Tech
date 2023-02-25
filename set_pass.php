@@ -1,26 +1,22 @@
 <?php
 include("config/dbconfig.php");
 $result = 0;
+$email = $_GET['email'];
 if (isset($_POST['login'])) {
-    $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $key = 'master-builder';
     $Pwd_peppered = Hash_hmac("Sha256", $password, $key);
-    $query = $con->query("select `password`,`status`,`id`,`type` from user where `user_email` = '$email'");
-    if ($query->num_rows == 1) {
-        while ($row = mysqli_fetch_assoc($query)) {
-            $pass = $row["password"];
-            if (Password_verify($Pwd_peppered, $pass) && $row['status'] == 1) {
+    $Pwd_hashed = Password_hash($Pwd_peppered, PASSWORD_ARGON2ID);
+    $query = $con->query("UPDATE `user` SET `password`='$Pwd_hashed' where `user_email` = '$email'");
+    if ($query) {
+        $fetch_id = $con->query("select id from user where `user_email` = '$email'");
+        if($fetch_id){
+            while ($row = mysqli_fetch_assoc($fetch_id)) {
                 session_start();
                 $_SESSION["id"] = $row['id'];
                 header("Location: category.php");
             }
-            else {
-                $result = 2;
-            }
         }
-    } else {
-        $result = 1;
     }
 }
 
@@ -61,13 +57,13 @@ if (isset($_POST['login'])) {
 <main class="main-wrapper">
     <div class="main-part">
         <div class="heading-cnt">
-            <h1>Login
+            <h1>Set Password
             </h1>
         </div>
         <div class="content-part">
             <form action="#" method="post">
                 <div class="email-box">
-                    <label for="pass_log_id">Password</label>
+                    <label for="pass_log_id">New Password</label>
                     <div class="hideshow-pass">
                         <input id="pass_log_id" type="password" name="password" required>
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>

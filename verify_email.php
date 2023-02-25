@@ -12,7 +12,7 @@ if (isset($_POST['verify_email'])) {
             $vcode = $data['vcode'];
         }
         if($v_code == $vcode){
-            header('Location: set_pass.php');
+            header('Location: set_pass.php?email='.$email);
         }
     } else {
         header('Location: index.php');
@@ -57,7 +57,7 @@ if (isset($_POST['verify_email'])) {
 <main class="main-wrapper">
     <div class="main-part">
         <div class="heading-cnt">
-            <h1>Login
+            <h1>Verify Email
             </h1>
         </div>
         <div class="content-part">

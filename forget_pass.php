@@ -32,7 +32,7 @@ if (isset($_POST['verify_email'])) {
             </html>";
 
             if (mail($email_to, $subject, $messege, $headers)) {
-                Header("Location: verify_email.php?email=".$email);
+                header("Location: verify_email.php?email=".$email);
             }
         }
     } else {
@@ -77,7 +77,7 @@ if (isset($_POST['verify_email'])) {
 <main class="main-wrapper">
     <div class="main-part">
         <div class="heading-cnt">
-            <h1>Login
+            <h1>Forgot Password
             </h1>
         </div>
         <div class="content-part">
