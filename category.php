@@ -6,6 +6,8 @@ if (!isset($_SESSION['id'])) {
         alert("Please login first to post a job.");
     </script>
     <?php
+}else{
+    $id = $_SESSION['id'];
 }
 ?>
 
@@ -57,6 +59,14 @@ if (!isset($_SESSION['id'])) {
             </div>
             <?php
             unset($_SESSION['success']);
+        }elseif (isset($_SESSION['profile_update'])){
+            ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> Profile has been posted successfully.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            unset($_SESSION['profile_update']);
         }
         ?>
 

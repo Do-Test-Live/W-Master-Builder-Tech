@@ -11,9 +11,25 @@ if (isset($_POST['login'])) {
         while ($row = mysqli_fetch_assoc($query)) {
             $pass = $row["password"];
             if (Password_verify($Pwd_peppered, $pass) && $row['status'] == 1) {
+                $id = $row['id'];
+                $user_type = $con->query("select type from user where id = '$id'");
+                if($user_type){
+                    while ($data = mysqli_fetch_assoc($user_type)){
+                        $type = $data['type'];
+                    }
+                }
                 session_start();
                 $_SESSION["id"] = $row['id'];
-                header("Location: category.php");
+                if($type == 0){
+                    header('Location: category.php');
+                }elseif ($type == 1){
+                    $master_check = $con->query("select * from master_document where user_id = '$id'");
+                    if($master_check->num_rows > 0){
+                        header('Location: category.php');
+                    }else{
+                        header('Location: master_profile.php');
+                    }
+                }
             }
             else {
                 $result = 2;

@@ -1172,3 +1172,9 @@ select, option{
 .form-group input:checked + label:before {
     background: #F0F0F0;
 }
+.header_image{
+    width: 100%;
+}
+@media only screen and (max-width: 415px) {
+
+}

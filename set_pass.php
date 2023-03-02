@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
         <div class="content-part">
             <form action="#" method="post">
                 <div class="email-box">
-                    <label for="pass_log_id">New Password</label>
+                    <label for="pass_log_id">New Password (<span style="font-size: 12px;">(At least 1 Capital Letter, 1 small letter, 1 number and 1 special character)</span>)</label>
                     <div class="hideshow-pass">
                         <input id="pass_log_id" type="password" name="password" required>
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field_icon toggle-password"></span>

@@ -15,9 +15,19 @@ if (isset($_POST['verify_email'])) {
     $v_code = mysqli_real_escape_string($con, $_POST['v_code']);
     $update_query = $con->query("UPDATE `user` SET `status`='1' WHERE `user_email` = '$email' and `vcode` = '$v_code'");
     if ($update_query) {
+        $user_type = $con->query("select type from user where id = $id");
+        if($user_type){
+            while ($row = mysqli_fetch_assoc($user_type)){
+                $type = $row['type'];
+            }
+        }
         session_start();
         $_SESSION['id'] = $id;
-        header('Location: category.php');
+        if($type == 0){
+            header('Location: category.php');
+        }elseif ($type == 1){
+            header('Location: master_profile.php');
+        }
     } else {
         header('Location: index.php');
     }

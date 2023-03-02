@@ -40,8 +40,8 @@
             </select>
         </div>
 
-        <div class="row">
-            <img src="images/master_home.jpg" alt="" width="100%">
+        <div class="">
+            <img src="images/master_home.jpg" alt="" class="header_image">
         </div>
 
         <div class="desired-part">
