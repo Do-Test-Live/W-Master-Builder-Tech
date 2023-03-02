@@ -6,25 +6,36 @@ if(!isset($_SESSION['id'])){
     $id = $_SESSION['id'];
 }
 include ("config/dbconfig.php");
+
+$result = 0;
 if(isset($_POST['profile_update'])) {
     if (isset($_POST['cat'])) {
-        echo $cat = implode(",", $_POST['cat']);
+        $cat = implode(",", $_POST['cat']);
     }else{
         $cat = '';
     }
-    $c_image = $_FILES['image']['name'];
-    $c_image_temp=$_FILES['image']['tmp_name'];
-    $imageFileType = strtolower(pathinfo($c_image,PATHINFO_EXTENSION));
-    if($imageFileType != "pdf" ){
-        echo "wrong file extension";
-    }else{
-        if(move_uploaded_file($c_image_temp , "documents/$c_image")){
-            $insert_job = $con->query("INSERT INTO `master_document`(`user_id`, `cat_id`, `document`) VALUES ('$id','$cat','$c_image')");
-            if($insert_job){
-                $_SESSION['profile_update'] = 'success';
-                header('Location: category.php');
+    $uploaded_files = array();
+    $total_image = count($_FILES['images']['name']);
+    if($total_image <= 10){
+        foreach($_FILES['images']['name'] as $key=>$name) {
+            $size = $_FILES['images']['name'];
+            $tmp_name = $_FILES['images']['tmp_name'][$key];
+            $path = 'documents/' . $name;
+            if($size[0] < 1000001){
+                move_uploaded_file($tmp_name, $path);
+                $uploaded_files[] = $name;
             }
+
         }
+        $image_names = implode(",", $uploaded_files);
+
+        $sql = "INSERT INTO master_document (user_id,cat_id,document) VALUES ('$id','$cat','$image_names')";
+
+        if(mysqli_query($con, $sql)) {
+            header("Location: category.php");
+        }
+    }else{
+        $result = 1;
     }
 }
 
@@ -84,8 +95,8 @@ if(isset($_POST['profile_update'])) {
                 }
                 ?>
                 <div class="renovat-item">
-                    <label for="r6">Documents((Please upload your construction permit(s), insurance, credit check documents. PDF Only)</label>
-                    <input type="file" id="r6" name="image" placeholder="" required>
+                    <label for="r6">Documents((Please upload your construction permit(s), insurance, credit check documents. Not more than 10 files. Each file shouldn't exceed 1mb.)</label>
+                    <input type="file" id="r6" name="images[]" placeholder="" multiple required>
                 </div>
 
                 <div class="submit-btn text-center pt-4">
